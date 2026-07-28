@@ -35,3 +35,61 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+import math
+
+def is_prime(number):
+    """
+    Checks if a given number is prime.
+    
+    Parameters:
+        number (int): The number to check
+    
+    Returns:
+        bool: True if prime, False otherwise
+    """
+    # Numbers less than 2 are NOT prime
+    if number < 2:
+        return False
+    
+    # 2 is the only even prime number
+    if number == 2:
+        return True
+    
+    # Even numbers greater than 2 are NOT prime
+    if number % 2 == 0:
+        return False
+    
+    # Check odd divisors from 3 up to sqrt(number)
+    limit = int(math.sqrt(number))
+    for i in range(3, limit + 1, 2):
+        if number % i == 0:
+            return False
+    
+    return True
+
+
+def main():
+    """
+    Main program - handles user input and output
+    """
+    # Get user input
+    user_input = input("Enter a number: ")
+    
+    # Convert to integer with error handling
+    try:
+        num = int(user_input)
+    except ValueError:
+        print("Please enter a valid integer.")
+        return
+    
+    # Check if prime using the function
+    if is_prime(num):
+        print(f"{num} is a prime number.")
+    else:
+        print(f"{num} is NOT a prime number.")
+
+
+# Program entry point
+if __name__ == "__main__":
+    main()
