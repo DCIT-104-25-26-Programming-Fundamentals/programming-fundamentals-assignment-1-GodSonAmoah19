@@ -39,3 +39,111 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+def calculate_sum(numbers):
+    """
+    Calculates the sum of all numbers in the list.
+    
+    Parameters:
+        numbers (list): List of numbers
+    
+    Returns:
+        float/int: The sum of all numbers
+    """
+    total = 0
+    for num in numbers:
+        total += num
+    return total
+
+
+def calculate_average(numbers):
+    """
+    Calculates the average of all numbers in the list.
+    
+    Parameters:
+        numbers (list): List of numbers
+    
+    Returns:
+        float: The average of all numbers
+    """
+    total = calculate_sum(numbers)
+    return total / len(numbers)
+
+
+def find_maximum(numbers):
+    """
+    Finds the maximum value in the list.
+    
+    Parameters:
+        numbers (list): List of numbers
+    
+    Returns:
+        float/int: The maximum value
+    """
+    max_value = numbers[0]
+    for num in numbers:
+        if num > max_value:
+            max_value = num
+    return max_value
+
+
+def find_minimum(numbers):
+    """
+    Finds the minimum value in the list.
+    
+    Parameters:
+        numbers (list): List of numbers
+    
+    Returns:
+        float/int: The minimum value
+    """
+    min_value = numbers[0]
+    for num in numbers:
+        if num < min_value:
+            min_value = num
+    return min_value
+
+
+def main():
+    """
+    Main program - handles user input and output
+    """
+# Get the number of values
+    try:
+        n = int(input("How many numbers? "))
+    except ValueError:
+        print("Error: Please enter a valid integer.")
+        return
+    
+# Validate N is positive
+    if n <= 0:
+        print("Error: N must be a positive integer.")
+        return
+    
+# Collect the numbers
+    numbers = []
+    for i in range(1, n + 1):
+        try:
+            num = float(input(f"Enter number {i}: "))
+            numbers.append(num)
+        except ValueError:
+            print("Error: Please enter a valid number.")
+            return
+    
+# Calculate statistics
+    total = calculate_sum(numbers)
+    average = calculate_average(numbers)
+    maximum = find_maximum(numbers)
+    minimum = find_minimum(numbers)
+    
+# Display results
+    print("\nResults:")
+    print(f"Sum: {total}")
+    print(f"Average: {average}")
+    print(f"Maximum: {maximum}")
+    print(f"Minimum: {minimum}")
+
+
+# Program entry point
+if __name__ == "__main__":
+    main()
