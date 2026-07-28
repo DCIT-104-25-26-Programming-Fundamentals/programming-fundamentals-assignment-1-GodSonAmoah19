@@ -49,3 +49,91 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+def print_fibonacci_sequence(n):
+    """
+    Prints the first n terms of the Fibonacci sequence.
+    
+    Parameters:
+        n (int): Number of terms to display
+    """
+    if n <= 0:
+        print("Error: N must be a positive integer.")
+        return
+    
+    
+    a, b = 0, 1
+    
+    # Build the sequence string
+    sequence = []
+    
+    # Generate n terms
+    for i in range(n):
+        if i == 0:
+            sequence.append(str(a))
+        elif i == 1:
+            sequence.append(str(b))
+        else:
+            next_term = a + b
+            sequence.append(str(next_term))
+            a, b = b, next_term
+    
+    # Print the sequence
+    print("Fibonacci sequence:", " ".join(sequence))
+
+
+def is_fibonacci_number(num):
+    """
+    Checks if a number belongs to the Fibonacci sequence.
+    
+    Parameters:
+        num (int): The number to check
+    
+    Returns:
+        bool: True if the number is a Fibonacci number, False otherwise
+    """
+    if num < 0:
+        return False
+    
+    # Handle 0 and 1
+    if num == 0 or num == 1:
+        return True
+    
+    # Generate Fibonacci numbers until we reach or exceed the target
+    a, b = 0, 1
+    
+    while b < num:
+        a, b = b, a + b
+    
+    # Check if we found the number
+    return b == num
+
+
+def main():
+    """
+    Main program - handles both parts
+    """
+    # PART A: Print First N Terms
+    print("PART A: Print First N Terms")
+    try:
+        n = int(input("How many terms? "))
+        print_fibonacci_sequence(n)
+    except ValueError:
+        print("Error: Please enter a valid integer.")
+    
+    # PART B: Check if Number Belongs to Sequence
+    print("\nPART B: Check if Number is Fibonacci")
+    try:
+        num = int(input("Enter a number to check: "))
+        
+        if is_fibonacci_number(num):
+            print(f"{num} is a Fibonacci number.")
+        else:
+            print(f"{num} is NOT a Fibonacci number.")
+            
+    except ValueError:
+        print("Error: Please enter a valid integer.")
+
+
+if __name__ == "__main__":
+    main()
