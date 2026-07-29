@@ -55,3 +55,73 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+def print_single_table(number):
+    """
+    Prints the multiplication table for a single number from 1 to 12.
+    
+    Parameters:
+        number (int): The number to generate the table for
+    """
+    print(f"\nMultiplication Table for {number}:")
+    for i in range(1, 13):
+        result = number * i
+        print(f"{number}  x  {i:2}  =  {result:3}")
+
+
+def print_tables_up_to(n):
+    """
+    Prints multiplication tables for all numbers from 1 to n.
+    
+    Parameters:
+        n (int): The maximum number to generate tables for
+    """
+    for num in range(1, n + 1):
+        print_single_table(num)
+        if num < n:
+            print("-" * 30)
+
+
+def main():
+    """
+    Main program - handles both parts
+    """
+    print("=" * 50)
+    print("MULTIPLICATION TABLE GENERATOR")
+    print("=" * 50)
+    
+    # PART A: Single Table
+    print("\n" + "=" * 50)
+    print("PART A: SINGLE TABLE")
+    print("=" * 50)
+    
+    try:
+        num = int(input("Enter a number: "))
+        print_single_table(num)
+    except ValueError:
+        print("Error: Please enter a valid integer.")
+        return
+    
+    # PART B: Tables from 1 to N
+    print("\n" + "=" * 50)
+    print("PART B: TABLES FROM 1 TO N")
+    print("=" * 50)
+    
+    try:
+        n = int(input("Enter a number N: "))
+        if n <= 0:
+            print("Error: N must be a positive integer.")
+            return
+        print_tables_up_to(n)
+    except ValueError:
+        print("Error: Please enter a valid integer.")
+        return
+    
+    print("\n" + "=" * 50)
+    print("Program completed successfully!")
+    print("=" * 50)
+
+
+# Program entry point
+if __name__ == "__main__":
+    main()
